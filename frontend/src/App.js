@@ -29,8 +29,11 @@ function App() {
         <h1>
           tasks
         </h1>
-        <Task task_name="Task 1" deadline="9/15/25" subtask_array={subtasks1} />
-        <Task task_name="Task 2" deadline="9/15/25" subtask_array={subtasks2} />
+        {/* <Task task_name="Task 1" deadline="9/15/25" subtask_array={subtasks1} />
+        <Task task_name="Task 2" deadline="9/15/25" subtask_array={subtasks2} /> */}
+        {tasks.map((task, idx) => (
+          <Task key={idx} task_name={task.title} subtask_array={task.subtasks || []} />
+        ))}
       </main>
     </div>
   );
