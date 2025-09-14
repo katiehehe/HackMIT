@@ -157,7 +157,7 @@ function Task({ task_id, task_name, deadline, subtask_array, onAddSubtask, onDel
         )}
         <h3>{task_name}</h3>
         <h4> deadline: {deadline}</h4>
-        <button onClick={() => onAddSubtask(task_id)}>add subtasks2</button>
+        <button onClick={() => onAddSubtask(task_id)}>add subtasks</button>
         <button onClick={deleteTask}>delete task</button>
       </div>
       <div className="subtask-container">
