@@ -2,12 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from 'react';
 
+const API_URL = "https://hackmit-1upw.onrender.com/api/tasks";
+
 function App() {
    const [tasks, setTasks] = useState([]); //  state for backend tasks
 
   //  fetch tasks from backend when App mounts
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/tasks")
+    fetch(API_URL)
       .then(res => res.json())
       .then(data => setTasks(data))
       .catch(err => console.error(err));
@@ -26,7 +28,7 @@ function App() {
       setNewDeadline(`${year}-${month}-${day}`);
     }
 
-    const res = await fetch("http://127.0.0.1:5000/api/tasks", {
+    const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: newTitle, deadline: newDeadline, subtasks: [""]})
@@ -44,7 +46,7 @@ const handleDelete = (task_id) => {
 
   const addSubtask = async (taskId) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/tasks/${taskId}/subtasks`, {
+      const response = await fetch(API_URL+`/${taskId}/subtasks`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({})
@@ -129,7 +131,7 @@ function Task({ task_id, task_name, deadline, subtask_array, onAddSubtask, onDel
   };
 
   const deleteTask = async() => {
-    await fetch(`http://127.0.0.1:5000/api/tasks/${task_id}`, {
+    await fetch(API_URL+`/${task_id}`, {
       method: "DELETE",
     });
     onDelete(task_id);
