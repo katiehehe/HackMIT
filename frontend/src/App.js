@@ -3,6 +3,7 @@ import './App.css';
 import {useState, useEffect} from 'react';
 
 const API_URL = "https://hackmit-1upw.onrender.com/api/tasks";
+const LOCAL_URL = "http://127.0.0.1:5000/api/tasks";
 
 function App() {
    const [tasks, setTasks] = useState([]); //  state for backend tasks
@@ -75,15 +76,15 @@ const handleDelete = (task_id) => {
     <div className="App">  
 
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <h3>
           tasks
-        </p>
+        </h3>
+        <img src="/assets/banner.JPG" alt="dragon-banner" />
       </header>
 
       <main>
         <h1>
-          tasks
+          track your progress!
         </h1>
         {/* <Task task_name="Task 1" deadline="9/15/25" subtask_array={subtasks1} />
         <Task task_name="Task 2" deadline="9/15/25" subtask_array={subtasks2} /> */}
@@ -123,8 +124,15 @@ const handleDelete = (task_id) => {
   );
 }
 
+
 function Task({ task_id, task_name, deadline, subtask_array, onAddSubtask, onDelete }) {
   const [activeIndex, setActiveIndex] = useState(-1); // -1 = none selected
+  const images = [
+    "/assets/progress0.PNG",
+    "/assets/progress1.PNG",
+    "/assets/progress2.PNG",
+    "/assets/progress3.PNG",
+  ];
 
   const handleClick = (index) => {
     setActiveIndex(index==activeIndex ? -1 : index);
@@ -135,15 +143,21 @@ function Task({ task_id, task_name, deadline, subtask_array, onAddSubtask, onDel
       method: "DELETE",
     });
     onDelete(task_id);
-  }  
+  } 
   
+  const activeImage = images[Math.round(activeIndex/(subtask_array.length-1)*3)];
 
   return (
     <div className="App-task">
       <div className="titles-container">
+        {activeImage && (
+          <div className="task-image">
+            <img src={activeImage} alt={`Subtask ${activeIndex} image`} />
+          </div>
+        )}
         <h3>{task_name}</h3>
         <h4> deadline: {deadline}</h4>
-        <button onClick={() => onAddSubtask(task_id)}>Add Subtask</button>
+        <button onClick={() => onAddSubtask(task_id)}>add subtasks2</button>
         <button onClick={deleteTask}>delete task</button>
       </div>
       <div className="subtask-container">
