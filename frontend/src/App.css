@@ -42,17 +42,24 @@
   background-color: #d5d3c5;
   height: 10vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content:first baseline;
   margin: 5px;
 }
 
-.App-task h3 {
+.titles-container {
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:first baseline;
+}
+.titles-container h3 {
   padding: 30px;
 }
 
-.App-task h4 {
+.titles-container h4 {
   padding: 30px;
 }
 
@@ -60,18 +67,29 @@
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  height: 100%;
+  height: 50%;
+  width: 100%;
 }
 
 .subtask {
   background-color: #dbdbdb;
   height: 100%;
   flex-grow: 1;
-  border-right: 4px solid #111111;
+  border-right: 4px solid #d5d3c5;
   flex-direction: row;
   display: flex;
   align-items: center;      /* vertical center */
   justify-content: center; 
+}
+
+.subtask p {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.subtask:hover p {
+  visibility: visible;
+  opacity: 1;
 }
 
 .subtask.active {
