@@ -125,11 +125,17 @@ const handleDelete = (task_id) => {
 
 function Task({ task_id, task_name, deadline, subtask_array, onAddSubtask, onDelete }) {
   const [activeIndex, setActiveIndex] = useState(-1); // -1 = none selected
-  const images = [
+  const images = task_id%2==0 ?[
     "/assets/progress0.PNG",
     "/assets/progress1.PNG",
     "/assets/progress2.PNG",
     "/assets/progress3.PNG",
+  ] :
+  [
+    "/assets/progress10.PNG",
+    "/assets/progress11.PNG",
+    "/assets/progress12.PNG",
+    "/assets/progress13.PNG",
   ];
 
   const handleClick = (index) => {
