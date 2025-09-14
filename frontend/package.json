@@ -1,6 +1,5 @@
 {
   "name": "frontend",
-  "homepage": "https://emma-hw.github.io/HackMIT/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
