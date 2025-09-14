@@ -76,9 +76,7 @@ const handleDelete = (task_id) => {
     <div className="App">  
 
       <header className="App-header">
-        <h3>
-          tasks
-        </h3>
+        <img src="/assets/logo.PNG" alt="logo" />
         <img src="/assets/banner.JPG" alt="dragon-banner" />
       </header>
 
@@ -95,7 +93,7 @@ const handleDelete = (task_id) => {
           type="text"
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
-          placeholder="New task title"
+          placeholder="new task title"
         />
         <input
           type="date"
@@ -103,7 +101,7 @@ const handleDelete = (task_id) => {
           onChange={(e) => setNewDeadline(e.target.value)}
           placeholder="Select deadline"
         />
-        <button onClick={addTask}>Add Task</button>
+        <button onClick={addTask}>add task</button>
       </div>
 
         {tasks.map((task) => (

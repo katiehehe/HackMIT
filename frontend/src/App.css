@@ -113,5 +113,23 @@
 }
 
 .task-image img {
-  max-width: 50%;
+  width: 60%;
+  max-width: 20vh;
+}
+
+button {
+  background-color:#cef4ff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-color:#37bde1;
+  margin: 15px;
+  font-family: "Sour Gummy", sans-serif;
+}
+
+input {
+  font-family: "Sour Gummy", sans-serif;
+}
+
+body {
+  font-family: "Sour Gummy", sans-serif;
 }
