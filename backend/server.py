@@ -26,6 +26,7 @@ def add_task():
     tasks.append(new_task)
     return jsonify(new_task), 201
 
+
 if __name__ == "__main__":
     print("✅ Backend running at http://localhost:5000")
     app.run(debug=True)

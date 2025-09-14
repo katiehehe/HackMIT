@@ -13,11 +13,30 @@ function App() {
       .catch(err => console.error(err));
   }, []);
 
+  //add tasks from the frontend
+  const [newTitle, setNewTitle] = useState("");
+  const addTask = async () => {
+  if (!newTitle) return; // optional: ignore empty titles
+
+  const res = await fetch("http://127.0.0.1:5000/api/tasks", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title: newTitle, deadline: "2025-09-13", subtasks: ["subtask 1", "subtask 2"]})
+  });
+
+  const newTask = await res.json();
+  setTasks([...tasks, newTask]); // update frontend state
+  setNewTitle(""); // clear input
+};
+
+
+  //original code, don't touch
   const subtasks1 = ['Subtask 1', 'Subtask 2', 'Subtask 3'];
   const subtasks2 = ['Help', 'Me', 'Please', '...'];
-
+  
   return (
-    <div className="App">
+    <div className="App">  
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -32,10 +51,21 @@ function App() {
         {/* <Task task_name="Task 1" deadline="9/15/25" subtask_array={subtasks1} />
         <Task task_name="Task 2" deadline="9/15/25" subtask_array={subtasks2} /> */}
         {tasks.map((task, idx) => (
-          <Task key={idx} task_name={task.title} subtask_array={task.subtasks || []} />
+          <Task key={idx} task_name={task.title} deadline= {task.deadline} subtask_array={task.subtasks || []} />
         ))}
-      </main>
+        <div>
+        <input
+          type="text"
+          value={newTitle}
+          onChange={(e) => setNewTitle(e.target.value)}
+          placeholder="New task title"
+        />
+        <button onClick={addTask}>Add Task</button>
+      </div>
+      </main>  
     </div>
+
+    
   );
 }
 
