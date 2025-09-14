@@ -76,7 +76,7 @@ const handleDelete = (task_id) => {
     <div className="App">  
 
       <header className="App-header">
-        <img src="/assets/logo.PNG" alt="logo" />
+        <img src="/assets/logo.png" alt="logo" />
         <img src="/assets/banner.JPG" alt="dragon-banner" />
       </header>
 
